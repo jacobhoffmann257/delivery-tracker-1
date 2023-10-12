@@ -11,6 +11,24 @@
   </head>
 
   <body>
+  <nav>
+    <a href="/deliveries">Deliveries</a>
+    <a href="/users/sign_up">Sign Up</a>
+    <a href="/users/sign_in">Sign In</a>
+    <a href="users/sign_out">Sign Out</a>
+    <a href="/users/edit">Edit</a>
+  </nav>
+      <% if notice.present? %>
+      <div style="color: green">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div style="color: red">
+        <%= alert %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
