@@ -1,9 +1,9 @@
 class DeliveriesController < ApplicationController
   def index
-    matching_deliveries = Delivery.all
-
-    @list_of_deliveries = matching_deliveries.order({ :created_at => :desc })
-
+    the_id= current_user.id
+    matching= Delivery.where({user_id: the_id})
+    @arriving = matching.where({arrived: false}).order(:supposed_to_arrive_on)
+    @deliveried = matching.where({arrive: true}).order(:supposed_to_arribe_on)
     render({ :template => "deliveries/index" })
   end
 

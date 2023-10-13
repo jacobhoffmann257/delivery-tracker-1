@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Routes for the Delivery resource:
-
+  get("/",{controller: "deliveries", action: index})
   # CREATE
   post("/insert_delivery", { :controller => "deliveries", :action => "create" })
           
