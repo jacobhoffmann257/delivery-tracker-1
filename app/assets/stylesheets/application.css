@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ .waiting_on{
+  background-color: beige;
+ }
+ .received{
+  background-color: green;
+ }
