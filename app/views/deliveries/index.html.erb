@@ -17,14 +17,6 @@
 
     <form action="/insert_delivery" method="post">
       <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
         <label for="description_box">
           Description
         </label>
@@ -68,23 +60,42 @@
     <ul>
         <% @arriving.each do |a_delivery| %>
           <li>
-          <p> <%= a_delivery.description %></p>
-
-            <p><%= a_delivery.details %></p>
-            <p><%= a_delivery.supposed_to_arrive_on%></p>
+          <div>
+            <%= a_delivery.description %>
+          </div>
+          <div>
+            Details
+            <%= a_delivery.details %>
+          </div>
+          <div>
+            Supposed to arrive on
+            <%= a_delivery.supposed_to_arrive_on%>
+             </div>
+              <form action="/modify_delivery/<%=a_delivery.id%>" method="post">
+                <input type="hidden" name="arrived" value="true">
+              <button>Mark as received</buttton>
+            </form>
             </li>
+
         <% end %>
         </ul>
   </div>
     <div class="received">
     <h2>Received</h2>
     <ul>
-        <% @arriving.each do |a_delivery| %>
+        <% @deliveried.each do |a_delivery| %>
           <li>
           <p> <%= a_delivery.description %></p>
 
             <p><%= a_delivery.details %></p>
             <p><%= a_delivery.supposed_to_arrive_on%></p>
+            <div>
+            <small>
+            Updated at
+            <%= a_delivery.updated_at%>
+            <a href="delete_delivery/<%=a_delivery.id%>">Delete</a>
+            </small>
+            </div>
             </li>
         <% end %>
         </ul>
